@@ -1,9 +1,55 @@
 let cheese = document.querySelector('.cheese-cost')
+let parsedCheese = parseFloat(cheese.innerHTML)
+
+let petterCost = document.querySelector('.petter-cost')
+let parsedPetterCost = parseFloat(petterCost.innerHTML)
+
+/* increase cheese */
 
 function incrementCheese() {
-    cheese.innerHTML = parseFloat(cheese.innerHTML) + 1
+    parsedCheese += 1
+    cheese.innerHTML = parsedCheese
 }
 
+function buyPetter() {
+    if (parsedCheese >= parsedPetterCost) {
+        parsedCheese -= parsedPetterCost
+        cheese.innerHTML = parsedCheese
+    }
+}
+
+
+
+
+
+
+
+
+/* fancy upgrade animations */
+const upgrade = document.querySelector(".upgrade");
+
+upgrade.addEventListener("mousemove", (e) => {
+    const rect = upgrade.getBoundingClientRect();
+
+    const x = (e.clientX - rect.left) / rect.width * 2 - 1;
+    const y = (e.clientY - rect.top) / rect.height * 2 - 1;
+
+    const rotateY = x * 10;
+    const rotateX = -y * 10;
+
+    upgrade.style.setProperty("--rotate-x", `${rotateX}deg`);
+    upgrade.style.setProperty("--rotate-y", `${rotateY}deg`);
+});
+
+upgrade.addEventListener("mouseleave", () => {
+    upgrade.style.setProperty("--rotate-x", "0deg");
+    upgrade.style.setProperty("--rotate-y", "0deg");
+});
+
+
+
+
+/* fancy goose animations */
 const goose = document.querySelector(".gooseimg");
 
 goose.addEventListener("mousemove", (e) => {

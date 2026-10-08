@@ -38,7 +38,7 @@ html, body {
 
 
 
-/* goose image stuff */
+/* goose animation and image stuff */
 
 
 .gooseimg {
@@ -64,6 +64,28 @@ html, body {
 }
 
 
+/* upgrade animation stuff */
+.upgrade {
+    width: 800px;
+    transition: transform 0.15s ease;
+    filter: drop-shadow(20px 50px 10px rgba(0, 0, 0, 0.35));
+}
+
+.upgrade:hover {
+    transform:
+        perspective(500px)
+        rotateX(var(--rotate-x, 0deg))
+        rotateY(var(--rotate-y, 0deg))
+        scale(1.08);
+}
+
+.upgrade:active {
+    transform:
+        perspective(500px)
+        rotateX(var(--rotate-x, 0deg))
+        rotateY(var(--rotate-y, 0deg))
+        scale(0.95);
+}
 
 
 /* cheese icon stuff (i honestly dunno if im gonna do literally anything except for changing the scale but we'll see i guess */
@@ -99,4 +121,47 @@ html, body {
             scale(0);
         opacity: 0;
     }
+}
+
+
+
+/* upgrades */
+
+.upgrade-img {
+    width: 100px;
+    height: 100px;
+}
+
+.upgrade {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 330px;
+    height: 60px;
+    border: 8px solid rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.mid-section h4 {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.mid-section p {
+    margin: 0;
+}
+
+.upgrade-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.cost-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 20px;
 }
