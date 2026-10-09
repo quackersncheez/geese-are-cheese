@@ -1,20 +1,36 @@
+/* the block of variables */
+
+
 let cheese = document.querySelector('.cheese-cost')
 let parsedCheese = parseFloat(cheese.innerHTML)
 
 let petterCost = document.querySelector('.petter-cost')
 let parsedPetterCost = parseFloat(petterCost.innerHTML)
 
+let petterLevel = document.querySelector(".petter-level")
+let petterIncrease = document.querySelector(".petter-increase")
+let parsedPetterIncrease = parseFloat(petterIncrease.innerHTML)
+
+let cpc = 1;
+
 /* increase cheese */
 
 function incrementCheese() {
-    parsedCheese += 1
-    cheese.innerHTML = parsedCheese
+    cheese.innerHTML = Math.round(parsedCheese += cpc)
 }
 
 function buyPetter() {
     if (parsedCheese >= parsedPetterCost) {
-        parsedCheese -= parsedPetterCost
-        cheese.innerHTML = parsedCheese
+        cheese.innerHTML = Math.round(parsedCheese -= parsedPetterCost)
+
+        petterLevel.innerHTML ++
+
+        parsedPetterIncrease = parseFloat((parsedPetterIncrease * 1.03).toFixed(2))
+        petterIncrease.innerHTML = parsedPetterIncrease
+        cpc += parsedPetterIncrease
+
+        parsedPetterCost *= 1.18;
+        petterCost.innerHTML = Math.round(parsedPetterCost)
     }
 }
 
@@ -24,27 +40,6 @@ function buyPetter() {
 
 
 
-
-/* fancy upgrade animations */
-const upgrade = document.querySelector(".upgrade");
-
-upgrade.addEventListener("mousemove", (e) => {
-    const rect = upgrade.getBoundingClientRect();
-
-    const x = (e.clientX - rect.left) / rect.width * 2 - 1;
-    const y = (e.clientY - rect.top) / rect.height * 2 - 1;
-
-    const rotateY = x * 10;
-    const rotateX = -y * 10;
-
-    upgrade.style.setProperty("--rotate-x", `${rotateX}deg`);
-    upgrade.style.setProperty("--rotate-y", `${rotateY}deg`);
-});
-
-upgrade.addEventListener("mouseleave", () => {
-    upgrade.style.setProperty("--rotate-x", "0deg");
-    upgrade.style.setProperty("--rotate-y", "0deg");
-});
 
 
 

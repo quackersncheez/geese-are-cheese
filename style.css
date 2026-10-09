@@ -142,6 +142,7 @@ html, body {
     padding: 10px 20px;
     border-radius: 10px;
     background-color: white;
+    position: relative;
 }
 
 .mid-section h4 {
@@ -164,4 +165,20 @@ html, body {
     align-items: center;
     gap: 5px;
     height: 20px;
+}
+
+.next-level-info {
+    position: absolute;
+    right: -105px;
+    height: 75px;
+    width: 95px;
+    text-align: center;
+    background-color: lightgray;
+    border: 8px solid black;
+    border-radius: 10px;
+    display: none;
+}
+
+.upgrade:hover .next-level-info {
+    display: block;
 }
